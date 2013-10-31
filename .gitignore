@@ -1,4 +1,8 @@
+# Compiled Binaries #
 *.class
+
+# Library Files #
+lib/*
 
 # Package Files #
 *.jar
