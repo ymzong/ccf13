@@ -83,7 +83,7 @@ public class ccproj2b {
             InterruptedException {
         // Load the Property File with AWS Credentials.
         Properties properties = new Properties();
-        properties.load(ccproj2a.class
+        properties.load(ccproj2b.class
                 .getResourceAsStream("/AwsCredentials.properties"));
         BasicAWSCredentials bawsc =
                 new BasicAWSCredentials(properties.getProperty("accessKey"),

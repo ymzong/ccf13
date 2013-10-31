@@ -29,7 +29,7 @@ public class ccproj2c {
     public static void main(String[] args) throws IOException {
         // Load the Property File with AWS Credentials.
         Properties properties = new Properties();
-        properties.load(ccproj2a.class
+        properties.load(ccproj2c.class
                 .getResourceAsStream("/AwsCredentials.properties"));
         BasicAWSCredentials bawsc =
                 new BasicAWSCredentials(properties.getProperty("accessKey"),
