@@ -74,13 +74,13 @@ public class ccproj3d {
                 .getWriteCapacityUnits();
         System.out.println("Success! Following is the new table info:");
         System.out.printf(
-                "Name: %s (%s)\nRead Throughput: %l\nWrite Throughput: %l\n",
+                "Name: %s (%s)\nRead Throughput: %d\nWrite Throughput: %d\n",
                 tableName, tableStatus, tableRThroughput, tableWThroughput);
-        System.out.println("Waiting for the initialization of table...");
-        Thread.sleep(15000);
+        System.out.println("Waiting for the initialization of table... (20s)");
+        Thread.sleep(20000);
         tableDescription = DDBClient.describeTable(
                 new DescribeTableRequest().withTableName(tableName)).getTable();
-        while (tableDescription.getTableStatus() != "ACTIVE") {
+        while (!tableDescription.getTableStatus().equals("ACTIVE")) {
             System.out.println("Waiting for 5 more seconds...");
             Thread.sleep(5000);
             tableDescription = DDBClient.describeTable(
