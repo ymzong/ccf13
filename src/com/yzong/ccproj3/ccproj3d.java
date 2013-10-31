@@ -17,15 +17,10 @@ import com.amazonaws.services.dynamodbv2.model.TableDescription;
 
 public class ccproj3d {
 
-    static String TABLE_NAME = "proj3d";
+    static AmazonDynamoDBClient DDBClient;
 
-    /**
-     * @param args
-     * @throws IOException
-     * @throws InterruptedException
-     */
-    public static void main(String[] args) throws IOException,
-            InterruptedException {
+    /* Create a DynamoDB client using the given credentials. */
+    public static void initClient() throws IOException {
         // Load the Property File with AWS Credentials.
         Properties properties = new Properties();
         properties.load(ccproj3d.class
@@ -34,9 +29,14 @@ public class ccproj3d {
                 properties.getProperty("accessKey"),
                 properties.getProperty("secretKey"));
         // Create DynamoDB client.
-        AmazonDynamoDBClient DDBClient = new AmazonDynamoDBClient(bawsc);
+        DDBClient = new AmazonDynamoDBClient(bawsc);
         DDBClient.setEndpoint("https://dynamodb.us-east-1.amazonaws.com");
+        return;
+    }
 
+
+    /* Create a table of given name, following the specified spec. */
+    public static void createTable(String tName) throws InterruptedException {
         // Create table initialization request.
         CreateTableRequest createTableRequest = new CreateTableRequest();
         // Allocate R/W throughput of the table.
@@ -56,7 +56,7 @@ public class ccproj3d {
         keySchemas.add(new KeySchemaElement().withAttributeName("Picture")
                 .withKeyType(KeyType.RANGE));
         // Generate the final request.
-        createTableRequest.withTableName(TABLE_NAME)
+        createTableRequest.withTableName(tName)
                 .withProvisionedThroughput(throughput)
                 .withAttributeDefinitions(attributeDefinitions)
                 .withKeySchema(keySchemas);
@@ -89,6 +89,18 @@ public class ccproj3d {
         }
         System.out.printf("Success! The table %s is ready for use.\n",
                 tableName);
+        return;
+    }
+
+    /**
+     * @param args
+     * @throws IOException
+     * @throws InterruptedException
+     */
+    public static void main(String[] args) throws IOException,
+            InterruptedException {
+        initClient();
+        createTable("proj3d");
         return;
     }
 }
