@@ -22,6 +22,7 @@ import org.apache.hadoop.mapred.TextOutputFormat;
 
 public class InverseIndex {
 
+  // Sorted array of stop words.
   static String StopWords[] = new String[] {"a", "a's", "able", "about", "above", "according",
       "accordingly", "across", "actually", "after", "afterwards", "again", "against", "ain't",
       "all", "allow", "allows", "almost", "alone", "along", "already", "also", "although",
@@ -92,7 +93,8 @@ public class InverseIndex {
       String line = value.toString();
       StringTokenizer tokenizer = new StringTokenizer(line);
       while (tokenizer.hasMoreTokens()) {
-        String token = tokenizer.nextToken();
+        // Remove punctuation from beginning / ending of a token.
+        String token = tokenizer.nextToken().replaceAll("^\\p{Punct}+|\\p{Punct}+$", "");
         // Skip if stopper word.
         if (Arrays.binarySearch(StopWords, token) >= 0) {
           continue;
@@ -110,7 +112,7 @@ public class InverseIndex {
       String fileList = prevFile + ",";
       while (values.hasNext()) {
         String currFile = values.next().toString();
-        // Only include the file name if different from previous one.
+        // Include a file name only once.
         if (currFile.equals(prevFile) == false) {
           fileList += currFile + ",";
           prevFile = currFile;
@@ -135,6 +137,7 @@ public class InverseIndex {
     conf.setInputFormat(TextInputFormat.class);
     conf.setOutputFormat(TextOutputFormat.class);
 
+    // Have ten Map and Reduce running in parallel.
     conf.setNumMapTasks(10);
     conf.setNumReduceTasks(10);
 
