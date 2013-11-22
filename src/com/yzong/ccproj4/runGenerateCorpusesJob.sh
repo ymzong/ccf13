@@ -17,6 +17,5 @@ hadoop fs -copyToLocal /mnt/corpuses-output/* /mnt/output/
 
 # Combine the output files and sort the entries.
 cat part* > corpuses
-sort corpuses > sorted-corpuses
-
+sort -k1,1 -k2,2 -k3,3 -k4,4 -k5,5 --parallel 8 -T /mnt1/ corpuses > sorted-corpuses
 echo Done!
