@@ -79,7 +79,7 @@ public class GenerateCorpuses {
     conf.setInputFormat(TextInputFormat.class);
     conf.setOutputFormat(TextOutputFormat.class);
 
-    // Have ten Map and Reduce running in parallel.
+    // Have seven Map and Reduce running in parallel.
     conf.setNumMapTasks(7);
     conf.setNumReduceTasks(7);
 
@@ -89,3 +89,4 @@ public class GenerateCorpuses {
     JobClient.runJob(conf);
   }
 }
+
