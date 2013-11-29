@@ -9,5 +9,9 @@
 	<classpathentry kind="lib" path="lib/commons-io-2.4/commons-io-2.4-test-sources.jar"/>
 	<classpathentry kind="lib" path="lib/commons-io-2.4/commons-io-2.4-tests.jar"/>
 	<classpathentry kind="lib" path="lib/hadoop/hadoop-core.jar"/>
+	<classpathentry kind="lib" path="lib/hadoop/hbase-0.92.0.jar"/>
+	<classpathentry kind="lib" path="lib/commons-cli-1.2/commons-cli-1.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="lib/commons-cli-1.2/commons-cli-1.2-sources.jar"/>
+	<classpathentry kind="lib" path="lib/commons-cli-1.2/commons-cli-1.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

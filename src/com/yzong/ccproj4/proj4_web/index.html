@@ -1,0 +1,32 @@
+<html> 
+<head> 
+	<title>Text Input Predictor -- Jimmy Zong (yzong)</title> 
+	<script type="text/javascript" src="jquery/js/jquery-1.4.2.min.js"></script> 
+	<script type="text/javascript" src="jquery/js/jquery-ui-1.8.2.custom.min.js"></script> 
+	<script type="text/javascript"> 
+ 
+		jQuery(document).ready(function(){
+			$('#searchBox').autocomplete({source:'request.php', minLength:2});
+		});
+ 
+	</script> 
+	<link rel="stylesheet" href="jquery/css/smoothness/jquery-ui-1.8.2.custom.css" /> 
+	<style type="text/css"><!--
+	
+	        /* style the auto-complete response */
+	        li.ui-menu-item { font-size:12px !important; }
+	
+	--></style> 
+</head> 
+ 
+<body> 
+
+<h3>Welcome to my Final Project Demo!</h3>
+<h4>The backend HBase was populated with t=5 and n=8.</h4> 
+<form onsubmit="return false;"> 
+	Enter one or more words
+	<input id="searchBox" type="text" size="50" /> 
+</form> 
+ 
+</body> 
+</html>

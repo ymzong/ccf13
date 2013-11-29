@@ -3,6 +3,7 @@
 
 # Library Files #
 lib/*
+bin/*
 
 # Package Files #
 *.jar
